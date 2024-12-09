@@ -1,45 +1,61 @@
 const axios = require('axios');
-const cheerio = require('cheerio');
-const db = require('./db');
+const pool = require('./db'); // Подключаем базу данных
 
-// Функция для парсинга сайта Olx.uz
 async function scrapeOlx() {
-  console.log("starting scraping");
   try {
-    const { data } = await axios.get("https://www.olx.uz/transport/legkovye-avtomobili/?page=2");
-    const $ = cheerio.load(data);
-    //console.log(data);
+    // URL API OLX
+    const url = 'https://www.olx.uz/api/v1/offers/?offset=0&limit=10&category_id=108';
 
-    $(`[data-cy="l-card"]`).each(async (_, element) => {
-      let title = $(element).find(`[data-cy="ad-card-title"]`).text().trim();
-      let price = $(element).find(`[data-testid="ad-price"]`).text().trim();
-      let location = $(element).find(`[data-testid="location-date"]`).text().trim();
-      let url = $(element).find(".lheight22 .title-cell a").attr("href");
-      title = title.length < 255 ? title : "no title";
-      price = price.length < 255 ? price : "no price";
-      location = location.length < 255 ? location : "no location";
-      console.log("title:", title, "price:", price, "location:", location);
+    // Отправляем GET-запрос к API OLX
+    const response = await axios.get(url);
 
-      //   $(".offer-wrapper").each(async (_, element) => {
-      //     const title = $(element).find(".lheight22 .title-cell strong").text().trim();
-      //     const price = $(element).find(".price strong").text().trim();
-      //     const location = $(element).find(".bottom-cell small").text().trim();
-      //     const url = $(element).find(".lheight22 .title-cell a").attr("href");
-      //     console.log("title:",title);
+    // Проверяем наличие данных
+    if (response.data && response.data.data) {
+      const cars = response.data.data;
 
-      // Проверяем, есть ли уже такая машина в базе
-      const result = await db.query("SELECT * FROM cars WHERE url = $1", [url]);
-      if (result.rows.length === 0) {
-        // Если нет, добавляем в базу
-        await db.query(
-          "INSERT INTO cars (title, price, location, url, source) VALUES ($1, $2, $3, $4, $5)",
-          [title, price, location, url, "Olx.uz"]
+      // Проходим по каждому объявлению
+      for (const car of cars) {
+        const {
+          id,
+          url,
+          title,
+          description,
+          params,
+          location,
+          photos,
+        } = car;
+
+        // Ищем параметры (цена, год выпуска, пробег и т. д.)
+        const priceParam = params.find(p => p.key === 'price');
+        const price = priceParam ? priceParam.value.converted_value || null : null;
+
+        const yearParam = params.find(p => p.key === 'motor_year');
+        const year = yearParam ? yearParam.value.key || null : null;
+
+        const mileageParam = params.find(p => p.key === 'motor_mileage');
+        const mileage = mileageParam ? mileageParam.value.key || null : null;
+
+        // Город и регион
+        const city = location?.city?.name || null;
+        const region = location?.region?.name || null;
+
+        // Основное фото
+        const mainPhoto = photos?.[0]?.link.replace('{width}', '800').replace('{height}', '600') || null;
+
+        // Вставляем данные в базу данных
+        await pool.query(
+          'INSERT INTO cars (source, external_id, title, description, price, year, mileage, location_city, location_region, url, photo) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) ON CONFLICT (external_id) DO NOTHING',
+          ['olx', id, title, description, price, year, mileage, city, region, url, mainPhoto]
         );
+
+        console.log(`Added car: ${title}`);
       }
-    });
-  } catch (err) {
-    console.error("Error scraping Olx:", err.message);
+    } else {
+      console.log('No cars found in API response.');
+    }
+  } catch (error) {
+    console.error('Error scraping OLX:', error.message);
   }
 }
 
-module.exports = { scrapeOlx };
+module.exports = scrapeOlx;
