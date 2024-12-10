@@ -94,6 +94,22 @@ main {
 }
 
 
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+nav a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #ffffff;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+
+
+
+
 .car-list {
   text-align: center;
   margin-top: 20px;

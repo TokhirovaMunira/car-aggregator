@@ -17,14 +17,14 @@ const CarList = () => {
 
   return (
     <div className="car-list">
-      <h2>Варинты авто</h2>
+      <h2>Варианты авто</h2>
        <ul>
         {cars.map(car => (
           <li key={car.id}>
             <h3>{car.title}</h3>
-            <p>Price: {car.price}</p>
-            <p>Location: {car.location}</p>
-            <a href={car.url} target="_blank" rel="noopener noreferrer">View More</a>
+            <p>Цена: {car.price}</p>
+            <p>Локация: {car.location_city}, {car.location_region}</p>
+            <a href={car.url} target="_blank" rel="noopener noreferrer">Подробнее</a>
           </li>
         ))}
       </ul>

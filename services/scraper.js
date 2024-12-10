@@ -1,11 +1,6 @@
 const axios = require('axios');
 const pool = require('./db'); // Подключаем базу данных
 
-
-
-
-
-
 async function scrapeOlx() {
   try {
     // URL API OLX
@@ -49,7 +44,7 @@ async function scrapeOlx() {
 
         // Вставляем данные в базу данных
         await pool.query(
-          'INSERT INTO cars (source, external_id, title, description, price, year, mileage, location_city, location_region, url, photo) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) ON CONFLICT (external_id) DO NOTHING',
+          'INSERT INTO public.cars (source, external_id, title, description, price, year, mileage, location_city, location_region, url, photo) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) ON CONFLICT (external_id) DO NOTHING',
           ['olx', id, title, description, price, year, mileage, city, region, url, mainPhoto]
         );
 
@@ -61,10 +56,7 @@ async function scrapeOlx() {
   } catch (error) {
     console.error('Error scraping OLX:', error.message);
   }
+  return null;
 }
 
-
-
-
-
-module.exports = scrapeOlx;
+module.exports = { scrapeOlx };

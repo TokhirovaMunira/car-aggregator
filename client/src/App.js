@@ -8,7 +8,7 @@ const App = () => {
       <header className="App-header">
         <span>AvtoUlov</span>
         <nav>
-          <a href="#">О компании</a>
+        <a href="/about">О компании</a>
           <a href="#">Ваши машины здесь</a>
         </nav>
       </header>

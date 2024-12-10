@@ -3,6 +3,18 @@ const cors = require('cors');
 const { scrapeOlx } = require('./services/scraper');
 const app = express();
 const pool = require('./services/db');
+const path = require('path');
+
+// Маршрут для главной страницы
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Маршрут для страницы "О компании"
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'about.html'));
+});
+
 
 
 // Разрешаем запросы с фронтенда
@@ -21,7 +33,7 @@ app.use(cors());
 
 app.get('/cars', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM cars');
+    const result = await pool.query('SELECT * FROM public.cars');
     res.json(result.rows); // Возвращаем содержимое таблицы cars
   } catch (error) {
     console.error('Error fetching cars:', error);
@@ -34,5 +46,5 @@ app.get('/cars', async (req, res) => {
 const PORT = 3000;
 app.listen(PORT, async () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-  //await scrapeOlx();
+  await scrapeOlx();
 });
