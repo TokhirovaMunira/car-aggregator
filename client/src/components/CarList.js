@@ -22,6 +22,7 @@ const CarList = () => {
         {cars.map(car => (
           <li key={car.id}>
             <h3>{car.title}</h3>
+            {/* <img src={car.photo}/> */}
             <p>Цена: {car.price}</p>
             <p>Локация: {car.location_city}, {car.location_region}</p>
             <a href={car.url} target="_blank" rel="noopener noreferrer">Подробнее</a>

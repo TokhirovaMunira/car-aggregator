@@ -1,136 +1,101 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 20vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
+/* Сброс базовых стилей */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: #ffffff;
-  color: #201a1a;
-}
-
- .App-header h1 {
-  background-color: #007ee5;
-  display: flex; /* Включаем Flexbox */
-  justify-content: center; /* Центр по горизонтали */
-  align-items: center; /* Центр по вертикали */
-  text-align: center;
-  flex-direction: center;
-  font-size: 30px;
-  color: white;
-} 
-
-.App-header {
-background-color: #007ee5;
-padding: 30px 30px;
-display: flex;
-  justify-content: space-between;
-  align-items: left;
-  color: #fff;
-  font-size: 5px;
-  font-size: calc(5px + 5vmin);
-  padding-left: 20;
-}
-
-
-.App-link {
-  color: #61dafb;
-}
-
-.pos-r {
-  color: #282c34
-}
-
-nav a {
-  margin: 0 10px;
-  color: #ffffff;
-  background-color: #007ee5;
-  margin-right: 60px;
-  text-decoration: none;
- padding: 30px;
- font-size: calc(1px + 3vmin);
-}
-
-main {
-  padding: 30px;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.App {
-  text-align: center;
-}
-
-.App-header2 {
-  background-color: #007ee5;
-  min-height: 50px; /* Высота секции */
-  display: flex; /* Flexbox для центрирования */
-  flex-direction: column;
-  align-items: center; /* Центр по горизонтали */
-  justify-content: center; /* Центр по вертикали */
-  font-size: calc(10px + 2vmin); /* Размер шрифта */
-  color: white;
-  text-align: center; /* Центрирование текста */
-}
-
-
-body {
   font-family: Arial, sans-serif;
-  line-height: 1.6;
+  background-color: #f5f5f5;
+  color: #333;
 }
-nav a {
-  margin-right: 10px;
+
+/* Хедер */
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007ee5;
+  padding: 10px 20px;
+  color: white;
+}
+
+.header-logo a {
+  font-size: 24px;
+  color: white;
   text-decoration: none;
-  color: #ffffff;
+  font-weight: bold;
 }
-nav a:hover {
+
+.header-nav a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.header-nav a:hover {
   text-decoration: underline;
 }
 
-
-
-
-.car-list {
+/* Центральная секция */
+.search-section {
   text-align: center;
-  margin-top: 20px;
+  padding: 40px 20px;
+  background-color: #007ee5;
+  color: white;
 }
 
-.car-list ul {
-  list-style-type: none;
-  padding: 0;
+.search-section h1 {
+  margin-bottom: 20px;
 }
 
-.car-list li {
-  margin: 5px 0;
-  padding: 5px;
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 60%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
   border: 1px solid #ccc;
 }
 
-.car-list li a {
-  color: #007BFF;
-  text-decoration: none;
+.search-actions button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #007ee5;
+  cursor: pointer;
 }
 
-.car-list li a:hover {
-  text-decoration: underline;
+.search-actions button:hover {
+  background-color: #005bb5;
+  color: white;
+}
+
+/* Категории */
+.categories {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.category-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.category-item {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.category-item:hover {
+  background-color: #007ee5;
+  color: white;
+  border-color: #005bb5;
 }
