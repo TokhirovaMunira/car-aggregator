@@ -34,5 +34,5 @@ app.get('/cars', async (req, res) => {
 const PORT = 3000;
 app.listen(PORT, async () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-  await scrapeOlx();
+  //await scrapeOlx();
 });

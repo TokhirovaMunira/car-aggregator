@@ -1,6 +1,11 @@
 const axios = require('axios');
 const pool = require('./db'); // Подключаем базу данных
 
+
+
+
+
+
 async function scrapeOlx() {
   try {
     // URL API OLX
@@ -57,5 +62,9 @@ async function scrapeOlx() {
     console.error('Error scraping OLX:', error.message);
   }
 }
+
+
+
+
 
 module.exports = scrapeOlx;

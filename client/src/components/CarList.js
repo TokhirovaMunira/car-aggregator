@@ -17,8 +17,8 @@ const CarList = () => {
 
   return (
     <div className="car-list">
-      <h2>Available Cars</h2>
-      <ul>
+      <h2>Варинты авто</h2>
+       <ul>
         {cars.map(car => (
           <li key={car.id}>
             <h3>{car.title}</h3>

@@ -13,25 +13,65 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: center;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  font-size: calc(2px + 2vmin);
-  color: white;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #201a1a;
 }
+
+ .App-header h1 {
+  background-color: #007ee5;
+  display: flex; /* Включаем Flexbox */
+  justify-content: center; /* Центр по горизонтали */
+  align-items: center; /* Центр по вертикали */
+  text-align: center;
+  flex-direction: center;
+  font-size: 30px;
+  color: white;
+} 
+
+.App-header {
+background-color: #007ee5;
+padding: 30px 30px;
+display: flex;
+  justify-content: space-between;
+  align-items: left;
+  color: #fff;
+  font-size: 5px;
+  font-size: calc(5px + 5vmin);
+  padding-left: 20;
+}
+
 
 .App-link {
   color: #61dafb;
+}
+
+.pos-r {
+  color: #282c34
+}
+
+nav a {
+  margin: 0 10px;
+  color: #ffffff;
+  background-color: #007ee5;
+  margin-right: 60px;
+  text-decoration: none;
+ padding: 30px;
+ font-size: calc(1px + 3vmin);
+}
+
+main {
+  padding: 30px;
 }
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -41,19 +81,21 @@
   text-align: center;
 }
 
-.App-header {
-  background-color: #222427;
-  min-height: 5px;
-  display: flex;
+.App-header2 {
+  background-color: #007ee5;
+  min-height: 50px; /* Высота секции */
+  display: flex; /* Flexbox для центрирования */
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(5px + 2vmin);
+  align-items: center; /* Центр по горизонтали */
+  justify-content: center; /* Центр по вертикали */
+  font-size: calc(10px + 2vmin); /* Размер шрифта */
   color: white;
+  text-align: center; /* Центрирование текста */
 }
 
+
 .car-list {
-  text-align: left;
+  text-align: center;
   margin-top: 20px;
 }
 

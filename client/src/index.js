@@ -11,6 +11,8 @@ root.render(
   </React.StrictMode>
 );
 
+
+
 // Если хочешь измерять производительность в своем приложении, передай функцию для логирования результатов
 // Например: reportWebVitals(console.log)
 reportWebVitals();
