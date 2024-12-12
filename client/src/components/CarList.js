@@ -17,20 +17,26 @@ const CarList = () => {
 
   return (
     <div className="car-list">
-      <h2>Варианты авто</h2>
-       <ul>
+      <h2></h2>
+      <div className="car-grid">
         {cars.map(car => (
-          <li key={car.id}>
-            <h3>{car.title}</h3>
-            {/* <img src={car.photo}/> */}
-            <p>Цена: {car.price}</p>
-            <p>Локация: {car.location_city}, {car.location_region}</p>
-            <a href={car.url} target="_blank" rel="noopener noreferrer">Подробнее</a>
-          </li>
+          <div key={car.id} className="car-card">
+            <div className="car-image">
+              {/* <img src={car.photo} alt={car.title} /> */}
+            </div>
+            <div className="car-details">
+              <h3>{car.title}</h3>
+              <p className="car-price">Цена: {car.price} сум</p>
+              <p className="car-location">Локация: {car.location_city}, {car.location_region}</p>
+              <a href={car.url} target="_blank" rel="noopener noreferrer" className="car-link">Подробнее</a>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
 
 export default CarList;
+
+

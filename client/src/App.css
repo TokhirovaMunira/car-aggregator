@@ -99,3 +99,80 @@ body {
   color: white;
   border-color: #005bb5;
 }
+
+
+.car-grid {
+  display: flex; /* Горизонтальная раскладка */
+  flex-wrap: wrap; /* Позволяем перенос карточек */
+  gap: 20px; /* Отступ между карточками */
+  justify-content: center; /* Центрируем карточки */
+  padding: 20px;
+  background-color: #f5f5f5; /* Цвет фона страницы */
+}
+
+.car-card {
+  display: flex; /* Горизонтальная раскладка внутри карточки */
+  flex-direction: row; /* Слева информация, справа изображение */
+  align-items: center; /* Выравниваем по вертикали */
+  background: #fff; /* Белый фон карточки */
+  border-radius: 10px; /* Скругленные углы */
+  overflow: hidden; /* Обрезаем лишнее */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Эффект при наведении */
+  width: 500px; /* Фиксированная ширина карточки */
+}
+
+.car-card:hover {
+  transform: translateY(-5px); /* Поднимаем карточку */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Увеличиваем тень */
+}
+
+.car-details {
+  flex: 2; /* Занимает больше места, чем изображение */
+  padding: 20px; /* Внутренний отступ */
+}
+
+.car-details h3 {
+  font-size: 1.2em;
+  color: #333; /* Цвет текста */
+  margin-bottom: 10px;
+}
+
+.car-price {
+  font-size: 1em;
+  color: #007ee5; /* Цвет для выделения цены */
+  font-weight: bold;
+}
+
+.car-location {
+  font-size: 0.9em;
+  color: #666; /* Второстепенный текст */
+}
+
+.car-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px; /* Отступы внутри кнопки */
+  background-color: #007ee5; /* Цвет фона кнопки */
+  color: #fff; /* Цвет текста кнопки */
+  border-radius: 5px; /* Скругленные углы кнопки */
+  text-decoration: none; /* Убираем подчеркивание */
+  font-size: 0.9em;
+}
+
+.car-link:hover {
+  background-color: #005bb5; /* Более темный цвет при наведении */
+}
+
+.car-image {
+  flex: 1; /* Занимает меньше места */
+  height: 100%; /* Высота по размеру карточки */
+}
+
+.car-image img {
+  width: 100%; /* Изображение по ширине блока */
+  height: 100%; /* Высота блока */
+  object-fit: cover; /* Масштабируем изображение, сохраняя пропорции */
+  border-left: 1px solid #e0e0e0; /* Разделительная линия между текстом и изображением */
+}
+
