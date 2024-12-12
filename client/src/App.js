@@ -44,6 +44,7 @@ const App = () => {
             <div className="category-item">Hybrid</div>
           </div>
         </section>
+        
 
         {/* Маршруты */}
         <Routes>

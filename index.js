@@ -1,9 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-const { scrapeOlx } = require('./services/scraper');
+const { scrapeOlx, scrapeUzumAvto } = require('./services/scraper');
 const app = express();
 const pool = require('./services/db');
 const path = require('path');
+
 
 // Маршрут для главной страницы
 app.get('/', (req, res) => {
@@ -47,4 +48,6 @@ const PORT = 3000;
 app.listen(PORT, async () => {
   console.log(`Server is running on http://localhost:${PORT}`);
   await scrapeOlx();
+  await scrapeUzumAvto();
 });
+
