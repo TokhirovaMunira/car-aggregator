@@ -17,7 +17,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #007ee5;
+  background-color: rgb(238, 78, 198);
   padding: 10px 20px;
   color: white;
 }
@@ -29,6 +29,16 @@ body {
   font-weight: bold;
 }
 
+.logo {
+  height: 50px; /* Задайте высоту логотипа */
+  width: auto;  /* Автоматическое изменение ширины для сохранения пропорций */
+  margin-right: 10px; /* Расстояние между логотипом и текстом */
+}
+.header-logo {
+  display: flex;
+  align-items: center; /* Выравнивание по вертикали */
+}
+
 .header-nav a {
   margin: 0 15px;
   color: white;
@@ -38,40 +48,94 @@ body {
 .header-nav a:hover {
   text-decoration: underline;
 }
+.search-bar {
+  width: 100%; /* Ширина поисковой строки */
+  display: flex;
+  justify-content: center; /* Центрирование ввода */
+}
 
-/* Центральная секция */
 .search-section {
   text-align: center;
   padding: 40px 20px;
-  background-color: #007ee5;
+  background: linear-gradient(to bottom, rgb(238, 78, 198) 0%, rgb(117, 1, 111) 100%);
   color: white;
+  border-bottom-left-radius: 50% 20px; /* Волнистый эффект */
+  border-bottom-right-radius: 50% 20px;
 }
+
+.search-bar {
+  width: 100%; /* Ширина поисковой строки */
+  display: flex;
+  justify-content: center; /* Центрирование ввода */
+}
+
+.search-bar input {
+  width: 60%; /* Ширина инпута */
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 50px; /* Делаем овал */
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 10px rgba(116, 77, 77, 0.1);
+  outline: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.search-bar input:focus {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: #000000;
+}
+
 
 .search-section h1 {
   margin-bottom: 20px;
 }
+
 
 .search-bar {
   margin-bottom: 20px;
 }
 
 .search-bar input {
-  width: 60%;
-  padding: 10px;
+  width: 50%; /* Ширина строки поиска */
+  max-width: 600px; /* Ограничиваем ширину */
+  padding: 10px 20px;
   font-size: 16px;
-  border-radius: 20px;
+  border-radius: 25px; /* Закругляем углы */
   border: 1px solid #ccc;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.search-bar input:focus {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: #000000;
+}
+
+.search-actions {
+  display: flex; /* Flexbox для кнопок */
+  gap: 10px; /* Отступы между кнопками */
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .search-actions button {
-  margin: 5px;
+  margin: 0; /* Убираем лишние отступы */
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   background-color: white;
-  color: #007ee5;
+  color: #2b2b2b;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.search-actions button:hover {
+  background-color: #005bb5;
+  color: white;
+}
+
 
 .search-actions button:hover {
   background-color: #005bb5;
@@ -93,9 +157,9 @@ body {
 .category-item {
   background-color: white;
   border: 1px solid #ccc;
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
-  width: 100px;
+  width: 150px;
   text-align: center;
   cursor: pointer;
 }
